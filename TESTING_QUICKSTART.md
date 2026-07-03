@@ -114,6 +114,47 @@ test("Feature - should work", async () => {
 });
 ```
 
+## 9. Manual Testing with cURL
+
+Test endpoints directly without running test suite:
+
+```bash
+# Start services
+npm run dev:all
+
+# In another terminal, test endpoints:
+
+# Health check
+curl http://localhost:9090/health
+
+# List all orders
+curl http://localhost:9090/api/orders
+
+# Get specific order
+curl http://localhost:9090/api/orders/12345
+
+# Authorize payment
+curl http://localhost:9090/api/payments/authorize \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"orderId":"12345","amount":79.99,"currency":"CAD"}'
+
+# Get shipping rates
+curl "http://localhost:9090/api/shipping/rates?postalCode=M5V3A8&country=CA&weightGrams=1000"
+
+# Create shipment
+curl http://localhost:9090/api/shipping/shipments \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "orderId":"12345",
+    "shippingRate":{"serviceLevel":"standard","amount":7.99,"currency":"CAD"},
+    "address":{"postalCode":"M5V3A8","country":"CA"}
+  }'
+
+# Get catalog product
+curl http://localhost:9090/api/catalog/products/sku-123
+```
 
 ## Quick Reference
 
