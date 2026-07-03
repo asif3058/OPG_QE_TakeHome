@@ -1,3 +1,6 @@
+## Quick Start
+See [TESTING_QUICKSTART.md](TESTING_QUICKSTART.md) for testing setup and commands.
+
 # Ecommerce API Gateway
 
 This project is a Node.js API gateway for an ecommerce platform. It exposes a single entry point for client applications and forwards traffic to downstream services such as auth, catalog, cart, orders, payments, inventory, shipping, and customer accounts.
